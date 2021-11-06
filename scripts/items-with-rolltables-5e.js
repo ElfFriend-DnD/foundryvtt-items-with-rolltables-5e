@@ -80,8 +80,6 @@ class ItemsWithRollTables5eItemSheet {
 
     const document = await RollTable.fromDropData(data);
 
-    console.log('drop processed', item, event, data, document);
-
     if (!document) return false;
 
     item.setFlag(ItemsWithRollTables5e.MODULE_NAME, 'rollable-table-uuid', document.uuid);
@@ -130,7 +128,6 @@ class ItemsWithRollTables5eItemSheet {
    * @returns 
    */
   static handleDisplayCard = (item, chatMessage) => {
-    debugger;
     const tableUuid = item.getFlag(ItemsWithRollTables5e.MODULE_NAME, 'rollable-table-uuid');
 
     if (!tableUuid) return;
@@ -141,8 +138,6 @@ class ItemsWithRollTables5eItemSheet {
     } else {
       chatMessageData = chatMessage;
     }
-
-    console.log('content', chatMessageData.content);
 
     const mutatedContent = $(chatMessageData.content);
 

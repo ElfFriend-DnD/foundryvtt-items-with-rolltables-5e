@@ -1,4 +1,4 @@
-# Attack Roll Check D&D5e
+# Items with Rollable Tables DnD5e
 
 ![Foundry Core Compatible Version](https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2FElfFriend-DnD%2Ffoundryvtt-items-with-rolltables-5e%2Fmain%2Fmodule.json&label=Foundry%20Version&query=$.compatibleCoreVersion&colorB=orange)
 ![Latest Release Download Count](https://img.shields.io/badge/dynamic/json?label=Downloads@latest&query=assets%5B1%5D.download_count&url=https%3A%2F%2Fapi.github.com%2Frepos%2FElfFriend-DnD%2Ffoundryvtt-items-with-rolltables-5e%2Freleases%2Flatest)
@@ -9,18 +9,19 @@
 [![ko-fi](https://img.shields.io/badge/-buy%20me%20a%20coke-%23FF5E5B)](https://ko-fi.com/elffriend)
 [![patreon](https://img.shields.io/badge/-patreon-%23FF424D)](https://www.patreon.com/ElfFriend_DnD)
 
-Adds a chat card that is only visible for GMs that checks if an attack roll hits the targeted tokens.
+Allows a rollable table to be attached to an item and rolled from the output chatcard.
 
-![items-with-rolltables-5e-cover](https://user-images.githubusercontent.com/7644614/137818567-7933117a-b90c-4e39-8d45-c0b094a4c218.jpg)
+To add a rollable table to the item, drag and drop it onto the new item sheet input. Rollable tables from Compendia work fine (though not if you expect to be able to draw without replacement).
 
-If there is no token targeted when the attack roll is rolled, no chat card is output.
+![item-with-rolltable-5e-item-sheet](https://user-images.githubusercontent.com/7644614/140627043-0453bb82-25cc-447d-b24c-abc02c92a210.jpg)
+![item-with-rolltable-5e-chat-card](https://user-images.githubusercontent.com/7644614/140627045-ce6a4bd6-24f2-4d1d-856b-b7aa511a67cc.jpg)
 
 Compatible with:
+- Core dnd5e roller
 - Minimal Rolling Enhancements
 
 Not Compatible with:
-- Better Rolls 5e (See #1 for details)
+- Better Rolls 5e
+- Midi QOL
 
-If you're using Midi, this is already entirely possible without this module. Do not use this with that.
-
-https://user-images.githubusercontent.com/7644614/137818286-f90ba76f-c613-4677-849d-cb69898958ab.mp4
+https://user-images.githubusercontent.com/7644614/140627021-531feda3-8df3-4b51-a37f-9d57c3e2fbc7.mp4
