@@ -13,9 +13,6 @@ Allows a rollable table to be attached to an item and rolled from the output cha
 
 To add a rollable table to the item, drag and drop it onto the new item sheet input. Rollable tables from Compendia work fine (though not if you expect to be able to draw without replacement).
 
-![item-with-rolltable-5e-item-sheet](https://user-images.githubusercontent.com/7644614/140627043-0453bb82-25cc-447d-b24c-abc02c92a210.jpg)
-![item-with-rolltable-5e-chat-card](https://user-images.githubusercontent.com/7644614/140627045-ce6a4bd6-24f2-4d1d-856b-b7aa511a67cc.jpg)
-
 Compatible with:
 - Core dnd5e roller
 - Minimal Rolling Enhancements
@@ -23,5 +20,9 @@ Compatible with:
 Not Compatible with:
 - Better Rolls 5e
 - Midi QOL
+
+![item-with-rolltable-5e-item-sheet](https://user-images.githubusercontent.com/7644614/140627043-0453bb82-25cc-447d-b24c-abc02c92a210.jpg)
+![item-with-rolltable-5e-chat-card](https://user-images.githubusercontent.com/7644614/140627045-ce6a4bd6-24f2-4d1d-856b-b7aa511a67cc.jpg)
+
 
 https://user-images.githubusercontent.com/7644614/140627021-531feda3-8df3-4b51-a37f-9d57c3e2fbc7.mp4
