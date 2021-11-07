@@ -40,15 +40,13 @@ class ItemsWithRollTables5eItemSheet {
     if (currentValue) {
       const document = await fromUuid(currentValue);
 
-      if (document.pack) {
+      if (document?.pack) {
         link = `@Compendium[${document.pack}.${document.id}]{${document.name}}`;
       } else {
-        link = document.link;
+        link = document?.link;
       }
-    }
 
-    if (link) {
-      link = TextEditor.enrichHTML(link);
+      link = TextEditor.enrichHTML(link ?? '@RollTable[unknown]{Unknown Table}');
     }
 
     let domToInject = `
@@ -183,6 +181,11 @@ class ItemsWithRollTables5eChat {
     if (!tableUuid) return;
 
     const rollableTable = await fromUuid(tableUuid);
+
+    if (!rollableTable) {
+      ui.notifications.error(game.i18n.localize(`${ItemsWithRollTables5e.MODULE_NAME}.missing-table-error`))
+      return;
+    }
 
     rollableTable.draw();
   }

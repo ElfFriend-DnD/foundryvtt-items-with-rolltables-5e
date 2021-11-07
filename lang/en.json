@@ -2,6 +2,7 @@
   "items-with-rolltables-5e": {
     "input-label": "Rollable Table",
     "input-placeholder": "Drop a rollable table here to attach to the item.",
-    "clear-title": "Clear"
+    "clear-title": "Clear",
+    "missing-table-error": "Linked table could not be found. Maybe it was deleted?"
   }
 }
