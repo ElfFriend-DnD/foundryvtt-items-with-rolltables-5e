@@ -11,7 +11,7 @@
   }
 
   static ready = async () => {
-    Hooks.on('renderItemSheet', ItemsWithRollTables5eItemSheet.handleRender);
+    Hooks.on('renderItemSheet5e', ItemsWithRollTables5eItemSheet.handleRender);
     Hooks.on('Item5e.displayCard', ItemsWithRollTables5eItem.handleDisplayCard);
     Hooks.on('renderChatPopout', ItemsWithRollTables5eChat.activateListeners);
   }
@@ -56,7 +56,7 @@ class ItemsWithRollTables5eItemSheet {
       <label>${game.i18n.localize(`${ItemsWithRollTables5e.MODULE_NAME}.input-label`)}</label>
       <div class="form-fields rollable-table-drop-target">
         ${!!link ? link : input}
-        ${!!currentValue ? '<a class="damage-control rolltable-control clear"><i class="far fa-times-circle"></i></a>' : ""}
+        ${!!currentValue ? `<a class="damage-control rolltable-control clear" title="${game.i18n.localize(`${ItemsWithRollTables5e.MODULE_NAME}.clear-title`)}"><i class="fa fa-times"></i></a>` : ""}
       </div>
     </div>
     `
@@ -109,10 +109,13 @@ class ItemsWithRollTables5eItemSheet {
    * @param {*} html 
    * @returns 
    */
-  static handleRender = async (itemSheet, html) => {
+  static handleRender = async (itemSheet, html, options) => {
     await this.injectDom(itemSheet, html);
 
     this.activateListeners(itemSheet, html);
+
+    // notify other modules we are done adding to the sheet (used by MRE to add the auto roll checkboxes)
+    Hooks.callAll(`${ItemsWithRollTables5e.MODULE_NAME}.sheetMutated`, itemSheet, html, options);
   }
 }
 
