@@ -2,7 +2,6 @@
   "name": "items-with-rolltables-5e",
   "title": "Items with Rollable Tables DnD5e",
   "description": "A module which notifies the GM when an attack roll hits a targeted token.",
-  "version": "1.0.0",
   "author": "Andrew Krigline",
   "authors": [
     {
@@ -13,10 +12,22 @@
       "patreon": "ElfFriend_DnD"
     }
   ],
-  "system": [ "dnd5e" ],
+  "url": "https://github.com/ElfFriend-DnD/foundryvtt-items-with-rolltables-5e",
+  "license": "https://github.com/ElfFriend-DnD/foundryvtt-items-with-rolltables-5e/raw/main/LICENSE",
+  "readme": "https://github.com/ElfFriend-DnD/foundryvtt-items-with-rolltables-5e/raw/main/README.md",
+  "bugs": "https://github.com/ElfFriend-DnD/foundryvtt-items-with-rolltables-5e/issues",
+  "changelog": "https://github.com/ElfFriend-DnD/foundryvtt-items-with-rolltables-5e/releases",
+  "flags": {
+    "allowBugReporter": true
+  },
+  "version": "1.0.0",
+  "minimumCoreVersion": "0.8.9",
+  "compatibleCoreVersion": "9",
   "scripts": [
     "./scripts/items-with-rolltables-5e.js"
   ],
+  "esmodules": [],
+  "styles": [],
   "languages": [
     {
       "lang": "en",
@@ -24,24 +35,24 @@
       "path": "lang/en.json"
     }
   ],
+  "packs": [],
+  "system": [
+    "dnd5e"
+  ],
   "dependencies": [
     {
-      "name": "more-hooks-5e"
+      "name": "more-hooks-5e",
+      "type": "module"
     },
     {
-      "name": "lib-wrapper"
+      "name": "lib-wrapper",
+      "type": "module"
     }
   ],
-  "minimumCoreVersion": "0.8.9",
-  "compatibleCoreVersion": "0.8.9",
-  "url": "https://github.com/ElfFriend-DnD/foundryvtt-items-with-rolltables-5e",
-  "bugs": "https://github.com/ElfFriend-DnD/foundryvtt-items-with-rolltables-5e/issues",
-  "changelog": "https://github.com/ElfFriend-DnD/foundryvtt-items-with-rolltables-5e/releases",
+  "socket": false,
   "manifest": "https://github.com/ElfFriend-DnD/foundryvtt-items-with-rolltables-5e/releases/latest/download/module.json",
-  "download": "https://github.com/ElfFriend-DnD/foundryvtt-items-with-rolltables-5e/releases/latest/download/module.zip",
-  "license": "https://github.com/ElfFriend-DnD/foundryvtt-items-with-rolltables-5e/raw/main/LICENSE",
-  "readme": "https://github.com/ElfFriend-DnD/foundryvtt-items-with-rolltables-5e/raw/main/README.md",
-  "flags": {
-    "allowBugReporter": true
-  }
+  "download": "https://github.com/ElfFriend-DnD/foundryvtt-items-with-rolltables-5e/releases/download/1.0.0/module.zip",
+  "protected": false,
+  "coreTranslation": false,
+  "library": false
 }
