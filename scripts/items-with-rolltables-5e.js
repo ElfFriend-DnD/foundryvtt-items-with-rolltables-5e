@@ -12,7 +12,7 @@
 
   static ready = async () => {
     Hooks.on('renderItemSheet5e', ItemsWithRollTables5eItemSheet.handleRender);
-    Hooks.on('Item5e.displayCard', ItemsWithRollTables5eItem.handleDisplayCard);
+    Hooks.on('dnd5e.preDisplayCard', ItemsWithRollTables5eItem.handleDisplayCard);
     Hooks.on('renderChatPopout', ItemsWithRollTables5eChat.activateListeners);
   }
 }
@@ -38,15 +38,9 @@ class ItemsWithRollTables5eItemSheet {
     let link;
 
     if (currentValue) {
-      const document = await fromUuid(currentValue);
+      const document = fromUuidSync(currentValue);
 
-      if (document?.pack) {
-        link = `@Compendium[${document.pack}.${document.id}]{${document.name}}`;
-      } else {
-        link = document?.link;
-      }
-
-      link = TextEditor.enrichHTML(link ?? '@RollTable[unknown]{Unknown Table}');
+      link = await TextEditor.enrichHTML(!!document ? `@UUID[${currentValue}]{${document?.name}}` : '@RollTable[unknown]{Unknown Table}', {async: true});
     }
 
     let domToInject = `
@@ -59,7 +53,7 @@ class ItemsWithRollTables5eItemSheet {
     </div>
     `
 
-    const el = html.find('[name="data.formula"]').first().parents('.form-group');
+    const el = html.find('[name="system.formula"]').first().parents('.form-group');
     el.after(domToInject);
 
     itemSheet.setPosition();
@@ -76,11 +70,9 @@ class ItemsWithRollTables5eItemSheet {
 
     if (data.type !== 'RollTable') return false;
 
-    const document = await RollTable.fromDropData(data);
+    if (!data.uuid) return false;
 
-    if (!document) return false;
-
-    item.setFlag(ItemsWithRollTables5e.MODULE_NAME, 'rollable-table-uuid', document.uuid);
+    item.setFlag(ItemsWithRollTables5e.MODULE_NAME, 'rollable-table-uuid', data.uuid);
   }
 
   static activateListeners = (itemSheet, html) => {
@@ -122,23 +114,16 @@ class ItemsWithRollTables5eItemSheet {
  */
  class ItemsWithRollTables5eItem {
   /**
-   * displayCard hook callback
-   * Updates the chatmessage created or Mutates the chatMessage data
+   * preDisplayCard hook callback
+   * Updates the chatmessage about to be created
    * @param {*} item 
-   * @param {*} chatMessage - Either a ChatMessage document that was created or the data needed to create one
+   * @param {*} chatMessageData - The data that will become a chatMessage
    * @returns 
    */
-  static handleDisplayCard = (item, chatMessage) => {
+  static handleDisplayCard = (item, chatMessageData) => {
     const tableUuid = item.getFlag(ItemsWithRollTables5e.MODULE_NAME, 'rollable-table-uuid');
 
     if (!tableUuid) return;
-
-    let chatMessageData;
-    if (chatMessage instanceof ChatMessage) {
-      chatMessageData = chatMessage.data;
-    } else {
-      chatMessageData = chatMessage;
-    }
 
     const mutatedContent = $(chatMessageData.content);
 
@@ -155,12 +140,7 @@ class ItemsWithRollTables5eItemSheet {
       }
     };
 
-    if (chatMessage instanceof ChatMessage) {
-      chatMessage.update(updateData);
-    } else {
-      // mutates chatMessage
-      foundry.utils.mergeObject(chatMessage, updateData);
-    }
+    foundry.utils.mergeObject(chatMessageData, updateData);
   }
 }
 
