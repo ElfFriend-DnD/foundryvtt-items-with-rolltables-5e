@@ -1,7 +1,7 @@
 {
   "id": "items-with-rolltables-5e",
   "title": "Items with Rollable Tables DnD5e",
-  "description": "A module which notifies the GM when an attack roll hits a targeted token.",
+  "description": "A module which allows a rollable table to be attached to an item.",
   "author": "Andrew Krigline",
   "authors": [
     {
