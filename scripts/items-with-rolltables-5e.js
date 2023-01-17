@@ -12,7 +12,7 @@
 
   static ready = async () => {
     Hooks.on('renderItemSheet5e', ItemsWithRollTables5eItemSheet.handleRender);
-    Hooks.on('dnd5e.preDisplayCard', ItemsWithRollTables5eItem.handleDisplayCard);
+    Hooks.on(`${game.system.id}.preDisplayCard`, ItemsWithRollTables5eItem.handleDisplayCard);
     Hooks.on('renderChatPopout', ItemsWithRollTables5eChat.activateListeners);
   }
 }
